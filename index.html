@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Leuke vr beleving (leuk)</title>
+    <title> VR-Appje </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="js/main.js"></script>
   </head>
   <body>
-    <h1>Test</h1>
+      
+    <a-scene id="js--scene">
+        <a-assets>
+        </a-assets>
+        <a-camera id="js--camera">
+            <a-entity 
+            cursor=""
+            material="color: black; shader: flat"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner:0.000001; radiusOuter: 0.01"
+            raycaster="objects: .boxes">
+        </a-entity>
+      </a-camera>
+    </a-scene>
   </body>
 </html>
