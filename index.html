@@ -5,23 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/note.js"></script>
+    <script src="js/hitBox.js"></script>
   </head>
   <body>
       
     <a-scene id="js--scene">
         <a-assets>
         </a-assets>
-        <a-camera id="js--camera">
-            <a-entity 
-            cursor=""
-            material="color: black; shader: flat"
-            position="0 0 -1"
-            geometry="primitive: ring; radiusInner:0.000001; radiusOuter: 0.01"
-            raycaster="objects: .boxes">
-        </a-entity>
-      </a-camera>
+
+        <a-box note position="0 -3.5 -15" scale=".5 .5 .5" class="js--interact" color="red"></a-box>
+
+        <!-- the hitbox -->
+        <a-box position="0 -4 -5" scale="8 .1 .1" color="black"></a-box>
+        <a-box position="-4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
+        <a-box position="4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
+
+        <a-box position="0 -4 -4" scale="8 .1 .1" color="black"></a-box>
+        <a-box position="-4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
+        <a-box position="4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
+        
+        
+        <a-box position="-4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
+        <a-box position="4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
+
+        <a-box position="-4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
+        <a-box position="4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
+
+        <a-box hitbox id="js--hitBox" position="0 -3.5 -4.5" scale="8 1 1" opacity="0.1" color="black"></a-box>
+
+        <a-camera id="js--camera" position="0 0 0">
+          <a-entity
+            id="js--cursor"
+            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+            animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
+            animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+            cursor = "fuse: true; fuseTimeout: 250"
+            material = "color: rgb(200,16,156); shader: flat"
+            geometry = "primitive: ring; radiusInner: 0.007; radiusOuter: 0.01"
+            position = "0 0 -0.5"
+            raycaster = "objects: .js--interact"
+        ></a-entity>
+          </a-camera>
     </a-scene>
   </body>
 </html>
