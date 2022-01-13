@@ -14,7 +14,6 @@ AFRAME.registerComponent("note", {
                 hitBox.dispatchEvent(missEvent);
                 t.missed = true;
             }
-           //todo
         }
         this.el.addEventListener("mouseenter",this.hitHandler);
     },
@@ -26,10 +25,8 @@ AFRAME.registerComponent("note", {
         const pos = this.el.getAttribute("position");
         var newpos = pos.x + " " + pos.y + " " + (pos.z-moveSpeed);
         this.el.setAttribute("position", newpos);
-        
-        console.log(this.el.missed)
        
-        if(this.el.getAttribute("position").z > -4.3 || this.el.missed){
+        if(this.el.getAttribute("position").z > -3 || this.el.missed){
             if(this.el.getAttribute("material").opacity > 0){
                 var newOpacity =  + this.el.getAttribute("material").opacity-opacitySpeed;
                 this.el.setAttribute("material", " color: red; shader: flat; opacity: "+newOpacity);
