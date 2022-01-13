@@ -1,14 +1,21 @@
-const songSpeed = 500;
+const songSpeed = 300;
 
 
 window.onload = () => {
+    //functie om het liedje op te halen en vervolgens nadat de startknop geklikt is
+    //begint deze functie het spel
     const startButton = document.getElementById("js--startButton");
-
-    startButton.addEventListener("click", (event) => {
+    startButton.addEventListener("click", async (event) => {
         startButton.parentNode.removeChild(startButton);
-        var tempNotes = [2,2,4,2,2,1,2];
 
-        startPlaying(tempNotes);
+        console.log(document.getElementsByClassName("hideAtStart"))
+        for(let v of document.getElementsByClassName("hideAtStart")){
+            v.parentNode.removeChild(v);
+        }
+      
+
+      var notes = await loadSong();
+      startPlaying(notes);
     })
 
     
@@ -16,12 +23,16 @@ window.onload = () => {
 
 
 
-const loadSong = () => {
-
+const  loadSong = () => {
+    //functie haalt het liedje op
+   return fetch("../song.json")
+    .then(response => response.json())
+    .then(json => {return(json[0]["notes"])});
 }
 
 
 const startPlaying = (notes) => {
+    //functie speelt het liedje af en spawnt de noten
     var time = 0;
     while (notes.length > 0) {
         setTimeout(() =>{

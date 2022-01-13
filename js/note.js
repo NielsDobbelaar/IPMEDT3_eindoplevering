@@ -4,6 +4,7 @@ AFRAME.registerComponent("note", {
         this.missed = false;
         var t = this.el;
         this.hitHandler = function(event){
+            //hit handler als er een noot wordt geraakt
             const hitBox = document.getElementById("js--hitBox");
             const hitEvent = new Event('blockHit');
             const missEvent = new Event('blockMiss');
@@ -19,6 +20,7 @@ AFRAME.registerComponent("note", {
     },
     update: function() {},
     tick: function() {
+        //de loop funcite die de noot beweegt en weghaalt wanneer hij gemist is
         const moveSpeed = -0.1;
         const opacitySpeed = 0.05;
 

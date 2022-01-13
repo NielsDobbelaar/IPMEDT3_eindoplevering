@@ -1,6 +1,7 @@
     AFRAME.registerComponent("hitbox", {
         init:  function() {
             var t = this.el;
+            //veranderd van kleur als hij een event krijgt van de note
             this.hitHandler = function(event){
                t.setAttribute("color" , "lime");
                t.setAttribute("opacity" , "0.5");

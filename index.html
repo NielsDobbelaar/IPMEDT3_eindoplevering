@@ -15,10 +15,23 @@
     <a-scene id="js--scene">
         <a-assets>
         </a-assets>
+        <!-- beginsel van startmenu -->
+          <a-entity position="0 0 -2" scale="1 1 1" class="hideAtStart"
+                    text="value: Leuke welkomst text\n druk op start om te spelen;
+                    color:black;
+                    align:center;
+                    wrapCount:25"
+                    material="color: #DDDDDD; shader:flat"
+          ></a-entity>
 
-        <a-box position=" 0 -1 -4" id="js--startButton" class="js--interact" color="skyblue"></a-box>
-
-        <!-- <a-box note position="0 -3.5 -25" scale=".5 .5 .5" class="js--interact" color="red"></a-box> -->
+          <a-entity position="0 -0.5 -2" id="js--startButton" class="hideAtStart js--interact"
+                    text="value: Start;
+                    color:black;
+                    align:center;
+                    wrapCount:10"
+                    geometry = "primitive: plane; width:0.5; height:0.3;"
+                    material="color: #DDDDDD; shader:flat"
+          ></a-entity>
 
         <!-- the hitbox -->
         <a-box position="0 -4 -5" scale="8 .1 .1" color="black"></a-box>
