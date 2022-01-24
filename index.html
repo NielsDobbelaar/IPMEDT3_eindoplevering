@@ -5,23 +5,104 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/note.js"></script>
+    <script src="js/hitBox.js"></script>
   </head>
   <body>
       
     <a-scene id="js--scene">
         <a-assets>
+          <audio id="hit_sound" src="sound/hit.wav" preload="auto"></audio>
         </a-assets>
-        <a-camera id="js--camera">
-            <a-entity 
-            cursor=""
-            material="color: black; shader: flat"
-            position="0 0 -1"
-            geometry="primitive: ring; radiusInner:0.000001; radiusOuter: 0.01"
-            raycaster="objects: .boxes">
-        </a-entity>
-      </a-camera>
+
+        
+        <a-entity id="js--hit_entity" sound="src: #hit_sound"></a-entity> 
+        <!-- startmenu -->
+          <a-entity position="0 0 -2" scale="1 1 1" class="hideAtStart"
+                    text="value: Leuke welkomst text\n druk op start om te spelen;
+                    color:black;
+                    align:center;
+                    wrapCount:25"
+                    material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+          <a-entity position="0 -0.5 -2" id="js--startButton" class="hideAtStart js--interact"
+                    text="value: Start;
+                    color:black;
+                    align:center;
+                    wrapCount:10"
+                    geometry = "primitive: plane; width:0.5; height:0.3;"
+                    material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+          <a-entity position="10000 .2 -2" scale="1 1 1" class="eindMenu"
+                    text="value: Game over;
+                    color:black;
+                    align:center;
+                    wrapCount:25"
+                    material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+
+          <a-entity position="10000 .1 -2" scale="1 1 1" id="js--score-text" class="eindMenu"
+          text="value: score : n/a;
+          color:black;
+          align:center;
+          wrapCount:25"
+          material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+          <a-entity position="10000 0 -2" scale="1 1 1" class="eindMenu"
+          text="value: Click start to play again!;
+          color:black;
+          align:center;
+          wrapCount:25"
+          material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+          <a-entity position="10000 -0.5 -2" id="js--reStartButton" class="eindMenu js--interact"
+                    text="value: Start;
+                    color:black;
+                    align:center;
+                    wrapCount:10"
+                    geometry = "primitive: plane; width:0.5; height:0.3;"
+                    material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+
+        <!-- the hitbox -->
+        <a-box position="0 -4 -5" scale="8 .1 .1" color="black"></a-box>
+        <a-box position="-4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
+        <a-box position="4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
+
+        <a-box position="0 -4 -4" scale="8 .1 .1" color="black"></a-box>
+        <a-box position="-4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
+        <a-box position="4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
+        
+        
+        <a-box position="-4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
+        <a-box position="4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
+
+        <a-box position="-4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
+        <a-box position="4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
+
+        <a-box hitbox id="js--hitBox" position="0 -3.5 -4.5" scale="8 1 1" opacity="0.1" color="black"></a-box>
+
+        <a-camera id="js--camera" position="0 0 0">
+          <a-entity
+            id="js--cursor"
+            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+            animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
+            animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+            cursor = "fuse: true; fuseTimeout: 250"
+            material = "color: rgb(200,16,156); shader: flat"
+            geometry = "primitive: ring; radiusInner: 0.007; radiusOuter: 0.01"
+            position = "0 0 -0.5"
+            raycaster = "objects: .js--interact"
+        ></a-entity>
+          </a-camera>
     </a-scene>
   </body>
 </html>
