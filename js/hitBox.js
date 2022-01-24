@@ -1,21 +1,34 @@
     AFRAME.registerComponent("hitbox", {
         init:  function() {
-            var t = this.el;
+            var t = this;
             //veranderd van kleur als hij een event krijgt van de note
+
+            
+            this.updateScore = function(event){
+                score ++;
+                var scoreText = document.getElementById("js--score-text");
+                scoreText.setAttribute("text", "value: score : " + score + "; color:black; align:center; wrapCount:25");
+            }
+
             this.hitHandler = function(event){
-               t.setAttribute("color" , "lime");
-               t.setAttribute("opacity" , "0.5");
+               t.el.setAttribute("color" , "lime");
+               t.el.setAttribute("opacity" , "0.5");
+              hitsound.components.sound.playSound();
+               t.updateScore();
                setTimeout(() => {
-                t.setAttribute("color", "black");
-                t.setAttribute("opacity" , "0.1");
+                t.el.setAttribute("color", "black");
+                t.el.setAttribute("opacity" , "0.1");
+                hitsound.components.sound.stopSound();
             }, 150);
             }
+
+
             this.missHandler = function(event){
-                t.setAttribute("color" , "red");
-                t.setAttribute("opacity" , "0.5");
+                t.el.setAttribute("color" , "red");
+                t.el.setAttribute("opacity" , "0.5");
                 setTimeout(() => {
-                 t.setAttribute("color", "black");
-                 t.setAttribute("opacity" , "0.1");
+                 t.el.setAttribute("color", "black");
+                 t.el.setAttribute("opacity" , "0.1");
              }, 150);
              }
              this.el.addEventListener("blockHit",this.hitHandler);

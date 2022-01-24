@@ -20,7 +20,7 @@ AFRAME.registerComponent("note", {
     },
     update: function() {},
     tick: function() {
-        //de loop funcite die de noot beweegt en weghaalt wanneer hij gemist is
+        //de loop funcite die de noot beweegt en weghaalt wanneer hij gemist is 
         const moveSpeed = -0.1;
         const opacitySpeed = 0.05;
 

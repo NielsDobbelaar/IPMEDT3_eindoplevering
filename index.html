@@ -14,8 +14,12 @@
       
     <a-scene id="js--scene">
         <a-assets>
+          <audio id="hit_sound" src="sound/hit.wav" preload="auto"></audio>
         </a-assets>
-        <!-- beginsel van startmenu -->
+
+        
+        <a-entity id="js--hit_entity" sound="src: #hit_sound"></a-entity> 
+        <!-- startmenu -->
           <a-entity position="0 0 -2" scale="1 1 1" class="hideAtStart"
                     text="value: Leuke welkomst text\n druk op start om te spelen;
                     color:black;
@@ -32,6 +36,41 @@
                     geometry = "primitive: plane; width:0.5; height:0.3;"
                     material="color: #DDDDDD; shader:flat"
           ></a-entity>
+
+          <a-entity position="10000 .2 -2" scale="1 1 1" class="eindMenu"
+                    text="value: Game over;
+                    color:black;
+                    align:center;
+                    wrapCount:25"
+                    material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+
+          <a-entity position="10000 .1 -2" scale="1 1 1" id="js--score-text" class="eindMenu"
+          text="value: score : n/a;
+          color:black;
+          align:center;
+          wrapCount:25"
+          material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+          <a-entity position="10000 0 -2" scale="1 1 1" class="eindMenu"
+          text="value: Click start to play again!;
+          color:black;
+          align:center;
+          wrapCount:25"
+          material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
+          <a-entity position="10000 -0.5 -2" id="js--reStartButton" class="eindMenu js--interact"
+                    text="value: Start;
+                    color:black;
+                    align:center;
+                    wrapCount:10"
+                    geometry = "primitive: plane; width:0.5; height:0.3;"
+                    material="color: #DDDDDD; shader:flat"
+          ></a-entity>
+
 
         <!-- the hitbox -->
         <a-box position="0 -4 -5" scale="8 .1 .1" color="black"></a-box>
