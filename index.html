@@ -9,16 +9,19 @@
     <script src="js/main.js"></script>
     <script src="js/note.js"></script>
     <script src="js/hitBox.js"></script>
+    <script src="js/swapi.js">
+
+    </script>
   </head>
   <body>
-      
+
     <a-scene id="js--scene">
         <a-assets>
           <audio id="hit_sound" src="sound/hit.wav" preload="auto"></audio>
         </a-assets>
 
-        
-        <a-entity id="js--hit_entity" sound="src: #hit_sound"></a-entity> 
+
+        <a-entity id="js--hit_entity" sound="src: #hit_sound"></a-entity>
         <!-- startmenu -->
           <a-entity position="0 0 -2" scale="1 1 1" class="hideAtStart"
                     text="value: Leuke welkomst text\n druk op start om te spelen;
@@ -69,7 +72,11 @@
                     wrapCount:10"
                     geometry = "primitive: plane; width:0.5; height:0.3;"
                     material="color: #DDDDDD; shader:flat"
+                    onclick="refresh()"
           ></a-entity>
+
+          <a-plane planets color="#ffffff" position="6 -5 0" radius="1"></a-plane>
+          <a-text planeten position="-1 -2 -3" color="black" text="font: sourcecodepro;"></a-text>
 
 
         <!-- the hitbox -->
@@ -80,8 +87,8 @@
         <a-box position="0 -4 -4" scale="8 .1 .1" color="black"></a-box>
         <a-box position="-4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
         <a-box position="4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
-        
-        
+
+
         <a-box position="-4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
         <a-box position="4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
 
