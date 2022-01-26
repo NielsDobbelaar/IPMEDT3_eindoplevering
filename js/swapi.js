@@ -8,7 +8,7 @@ AFRAME.registerComponent("planets", {
         let randomNum = Math.floor(Math.random() * 10) + 1;
         fetch(BASE_URL + PLANETS + randomNum)
           .then(response => response.json())
-          .then(data => planets[i].setAttribute("value", "Target planet: " + data.name));
+          .then(data => planets[i].setAttribute("value", "Target planet: \n" + data.name));
       }
     }
     this.el.addEventListener("click",this.newPlanets);
