@@ -25,6 +25,7 @@ window.onload = () => {
     const reStartButton = document.getElementById("js--reStartButton");
     reStartButton.addEventListener("click", async (event) => {
         // verplaatst het eindmenu nadat de speler op start heeft geklikt
+        score = 0;
         reStartButton.setAttribute("position", "10000" + " " + reStartButton.getAttribute("position").y + " " + reStartButton.getAttribute("position").z)
 
         for (let v of document.getElementsByClassName("eindMenu")) {
