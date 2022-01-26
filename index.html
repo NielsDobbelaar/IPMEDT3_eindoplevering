@@ -33,13 +33,10 @@
 
     <a-entity id="js--hit_entity" sound="src: #hit_sound"></a-entity>
     <!-- startmenu -->
-     <a-entity position="0 0 -2" scale="1 1 1" class="hideAtStart"
-                    text="value: Leuke welkomst text\n druk op start om te spelen;
+    <a-entity position="0 0 -2" scale="1 1 1" class="hideAtStart" text="value: Leuke welkomst text\n druk op start om te spelen;
                     color:black;
                     align:center;
-                    wrapCount:25"
-                    material="color: #DDDDDD; shader:flat"
-          ></a-entity>
+                    wrapCount:25" material="color: #DDDDDD; shader:flat"></a-entity>
 
     <a-entity position="0 3.8 -1.5" id="js--startButton" class="hideAtStart js--interact" text="value: Start;
                     width: .8;
@@ -68,11 +65,8 @@
                     width: .8;
                     color:white;
                     align:center;                                                                           
-                    wrapCount:10"
-                    geometry = "primitive: plane; width:0.5; height:0.3;"
-                    material="color: #DDDDDD; shader:flat"
-                    onclick="refresh()"
-          ></a-entity>
+                    wrapCount:10" geometry="primitive: plane; width:0.5; height:0.3;"
+      material="color: #DDDDDD; shader:flat" onclick="refresh()"></a-entity>
 
 
     <a-entity gltf-model="#ship" position="0 3 1.5" rotation="0 180 0" scale="2 2 2"></a-entity>
@@ -85,41 +79,38 @@
     <a-light type="point" position="0 0 0" intensity="1" distance="50"></a-light>
 
 
-          <a-plane planets color="#ffffff" position="6 -5 0" radius="1"></a-plane>
-          <a-text planeten position="-1 -2 -3" color="black" text="font: sourcecodepro;"></a-text>
+    <a-plane planets color="#ffffff" position="6 -5 0" radius="1"></a-plane>
+    <a-text planeten position="-1 -2 -3" color="black" text="font: sourcecodepro;"></a-text>
 
 
-        <!-- the hitbox -->
-        <a-box position="0 -4 -5" scale="8 .1 .1" color="black"></a-box>
-        <a-box position="-4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
-        <a-box position="4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
+    <!-- the hitbox -->
+    <a-box position="0 -4 -5" scale="8 .1 .1" color="black"></a-box>
+    <a-box position="-4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
+    <a-box position="4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
 
-        <a-box position="0 -4 -4" scale="8 .1 .1" color="black"></a-box>
-        <a-box position="-4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
-        <a-box position="4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
+    <a-box position="0 -4 -4" scale="8 .1 .1" color="black"></a-box>
+    <a-box position="-4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
+    <a-box position="4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
 
 
-        <a-box position="-4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
-        <a-box position="4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
+    <a-box position="-4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
+    <a-box position="4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
 
-        <a-box position="-4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
-        <a-box position="4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
+    <a-box position="-4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
+    <a-box position="4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
 
-        <a-box hitbox id="js--hitBox" position="0 -3.5 -4.5" scale="8 1 1" opacity="0.1" color="black"></a-box>
+    <a-box hitbox id="js--hitBox" position="0 -3.5 -4.5" scale="8 1 1" opacity="0.1" color="black"></a-box>
 
-        <a-camera id="js--camera" position="0 0 0">
-          <a-entity
-            id="js--cursor"
-            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-            animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
-            animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
-            cursor = "fuse: true; fuseTimeout: 250"
-            material = "color: rgb(200,16,156); shader: flat"
-            geometry = "primitive: ring; radiusInner: 0.007; radiusOuter: 0.01"
-            position = "0 0 -0.5"
-            raycaster = "objects: .js--interact"
-        ></a-entity>
-          </a-camera>
-    </a-scene>
-  </body>
+    <a-camera id="js--camera" position="0 4.6 0">
+      <a-entity id="js--cursor"
+        animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+        animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
+        animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+        cursor="fuse: true; fuseTimeout: 250" material="color: rgb(200,16,156); shader: flat"
+        geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5"
+        raycaster="objects: .js--interact"></a-entity>
+    </a-camera>
+  </a-scene>
+</body>
+
 </html>
