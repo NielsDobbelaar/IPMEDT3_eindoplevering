@@ -1,108 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title> VR-Appje </title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/note.js"></script>
-    <script src="js/hitBox.js"></script>
-  </head>
-  <body>
-      
-    <a-scene id="js--scene">
-        <a-assets>
-          <audio id="hit_sound" src="sound/hit.wav" preload="auto"></audio>
-        </a-assets>
 
-        
-        <a-entity id="js--hit_entity" sound="src: #hit_sound"></a-entity> 
-        <!-- startmenu -->
-          <a-entity position="0 0 -2" scale="1 1 1" class="hideAtStart"
-                    text="value: Leuke welkomst text\n druk op start om te spelen;
-                    color:black;
+<head>
+  <title> VR-Appje </title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.2.0/dist/aframe-environment-component.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/note.js"></script>
+  <script src="js/hitBox.js"></script>
+</head>
+
+<body>
+
+  <!-- <a-scene id="js--scene"> -->
+  <a-scene environment="preset: starry;" id="js--scene">
+    <a-assets>
+      <audio id="hit_sound" src="sound/hit.wav" preload="auto"></audio>
+
+      <a-asset-item id="planetOne" src="blender/PlanetOne.glb"></a-asset-item>
+      <a-asset-item id="planetTwo" src="blender/PlanetTwo.glb"></a-asset-item>
+      <a-asset-item id="planetThree" src="blender/PlanetThree.glb"></a-asset-item>
+      <a-asset-item id="ship" src="blender/Ship.glb"></a-asset-item>
+      <a-asset-item id="gitar" src="blender/guitar.glb"></a-asset-item>
+      <a-asset-item id="note" src="blender/note.glb"></a-asset-item>
+    </a-assets>
+
+
+
+    <a-entity id="js--hit_entity" sound="src: #hit_sound"></a-entity>
+    <!-- startmenu -->
+    <a-entity position="0 4.9 -2" scale="1 1 1" class="hideAtStart" text="value: Leuke welkomst text\n druk op start om te spelen;
+                    color:white;
                     align:center;
-                    wrapCount:25"
-                    material="color: #DDDDDD; shader:flat"
-          ></a-entity>
+                    wrapCount:25" material="color: #DDDDDD; shader:flat"></a-entity>
 
-          <a-entity position="0 -0.5 -2" id="js--startButton" class="hideAtStart js--interact"
-                    text="value: Start;
-                    color:black;
+    <a-entity position="0 3.8 -1.5" id="js--startButton" class="hideAtStart js--interact" text="value: Start;
+                    width: .8;
+                    color:white;
                     align:center;
-                    wrapCount:10"
-                    geometry = "primitive: plane; width:0.5; height:0.3;"
-                    material="color: #DDDDDD; shader:flat"
-          ></a-entity>
+                    wrapCount:10" geometry="primitive: plane; width:0.5; height:0.3;"
+      material="color: #DDDDDD; shader:flat; opacity: 0"></a-entity>
 
-          <a-entity position="10000 .2 -2" scale="1 1 1" class="eindMenu"
-                    text="value: Game over;
-                    color:black;
+    <a-entity position="10000 5.1 -2" scale="1 1 1" class="eindMenu" text="value: Game over;
+                    color:white;
                     align:center;
-                    wrapCount:25"
-                    material="color: #DDDDDD; shader:flat"
-          ></a-entity>
+                    wrapCount:25" material="color: #DDDDDD; shader:flat"></a-entity>
 
 
-          <a-entity position="10000 .1 -2" scale="1 1 1" id="js--score-text" class="eindMenu"
-          text="value: score : n/a;
-          color:black;
+    <a-entity position="10000 5 -2" scale="1 1 1" id="js--score-text" class="eindMenu" text="value: score : n/a;
+          color:white;
           align:center;
-          wrapCount:25"
-          material="color: #DDDDDD; shader:flat"
-          ></a-entity>
+          wrapCount:25" material="color: #DDDDDD; shader:flat"></a-entity>
 
-          <a-entity position="10000 0 -2" scale="1 1 1" class="eindMenu"
-          text="value: Click start to play again!;
-          color:black;
+    <a-entity position="10000 4.9 -2" scale="1 1 1" class="eindMenu" text="value: Click start to play again!;
+          color:white;
           align:center;
-          wrapCount:25"
-          material="color: #DDDDDD; shader:flat"
-          ></a-entity>
+          wrapCount:25" material="color: #DDDDDD; shader:flat"></a-entity>
 
-          <a-entity position="10000 -0.5 -2" id="js--reStartButton" class="eindMenu js--interact"
-                    text="value: Start;
-                    color:black;
+    <a-entity position="10000 3.8 -1.5" id="js--reStartButton" class="eindMenu js--interact" text="value: Start;
+                    width: .8;
+                    color:white;
                     align:center;
-                    wrapCount:10"
-                    geometry = "primitive: plane; width:0.5; height:0.3;"
-                    material="color: #DDDDDD; shader:flat"
-          ></a-entity>
+                    wrapCount:10" geometry="primitive: plane; width:0.5; height:0.3;"
+      material="color: #DDDDDD; shader:flat; opacity: 0"></a-entity>
 
 
-        <!-- the hitbox -->
-        <a-box position="0 -4 -5" scale="8 .1 .1" color="black"></a-box>
-        <a-box position="-4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
-        <a-box position="4 -3.55 -5" scale=".1 1 .1" color="black"></a-box>
+    <!-- the hitbox -->
+    <a-box position="0 2 -5" scale="8 .1 .1" color="white"></a-box>
+    <a-box position="-4 2.45 -5" scale=".1 1 .1" color="white"></a-box>
+    <a-box position="4 2.45 -5" scale=".1 1 .1" color="white"></a-box>
 
-        <a-box position="0 -4 -4" scale="8 .1 .1" color="black"></a-box>
-        <a-box position="-4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
-        <a-box position="4 -3.55 -4" scale=".1 1 .1" color="black"></a-box>
-        
-        
-        <a-box position="-4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
-        <a-box position="4 -3.1 -4.55" scale=".1 .1 1" color="black"></a-box>
+    <a-box position="0 2 -4" scale="8 .1 .1" color="white"></a-box>
+    <a-box position="-4 2.45 -4" scale=".1 1 .1" color="white"></a-box>
+    <a-box position="4 2.45 -4" scale=".1 1 .1" color="white"></a-box>
 
-        <a-box position="-4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
-        <a-box position="4 -4 -4.55" scale=".1 .1 1" color="black"></a-box>
 
-        <a-box hitbox id="js--hitBox" position="0 -3.5 -4.5" scale="8 1 1" opacity="0.1" color="black"></a-box>
+    <a-box position="-4 2 -4.55" scale=".1 .1 1" color="white"></a-box>
+    <a-box position="4 2 -4.55" scale=".1 .1 1" color="white"></a-box>
 
-        <a-camera id="js--camera" position="0 0 0">
-          <a-entity
-            id="js--cursor"
-            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-            animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
-            animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
-            cursor = "fuse: true; fuseTimeout: 250"
-            material = "color: rgb(200,16,156); shader: flat"
-            geometry = "primitive: ring; radiusInner: 0.007; radiusOuter: 0.01"
-            position = "0 0 -0.5"
-            raycaster = "objects: .js--interact"
-        ></a-entity>
-          </a-camera>
-    </a-scene>
-  </body>
+    <a-box position="-4 2.9 -4.55" scale=".1 .1 1" color="white"></a-box>
+    <a-box position="4 2.9 -4.55" scale=".1 .1 1" color="white"></a-box>
+
+    <a-box hitbox id="js--hitBox" position="0 2.45 -4.5" scale="8 1 1" opacity="0.1" color="white"></a-box>
+
+
+
+    <a-entity gltf-model="#ship" position="0 3 1.5" rotation="0 180 0" scale="2 2 2"></a-entity>
+    <a-entity gltf-model="#planetOne" position="50 50 -60" scale="2 2 2" rotation="0 70 40"></a-entity>
+    <a-entity gltf-model="#planetTwo" position="-30 30 -50"></a-entity>
+    <a-entity gltf-model="#planetThree" position="10 10 -100"></a-entity>
+
+    <a-camera id="js--camera" position="0 4.6 0">
+      <a-entity id="js--cursor" animation__click=" property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1
+        1 1"
+        animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
+        animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+        cursor="fuse: true; fuseTimeout: 250" material="color: rgb(200,16,156); shader: flat"
+        geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5"
+        raycaster="objects: .js--interact"></a-entity>
+    </a-camera>
+  </a-scene>
+
+  <a-light type="point" position="0 0 -2" intensity="1" distance="50"></a-light>
+</body>
+
 </html>

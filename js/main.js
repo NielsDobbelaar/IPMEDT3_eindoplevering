@@ -2,7 +2,7 @@ const songSpeed = 300;
 
 var score = 0;
 
-var hitsound ;
+var hitsound;
 
 window.onload = () => {
     hitsound = document.getElementById("js--hit_entity")
@@ -12,14 +12,14 @@ window.onload = () => {
     startButton.addEventListener("click", async (event) => {
         startButton.parentNode.removeChild(startButton);
 
-        for(let v of document.getElementsByClassName("hideAtStart")){
+        for (let v of document.getElementsByClassName("hideAtStart")) {
             v.parentNode.removeChild(v);
         }
-      
-        
 
-      var notes = await loadSong();
-      startPlaying(notes);
+
+
+        var notes = await loadSong();
+        startPlaying(notes);
     })
 
     const reStartButton = document.getElementById("js--reStartButton");
@@ -27,23 +27,25 @@ window.onload = () => {
         // verplaatst het eindmenu nadat de speler op start heeft geklikt
         reStartButton.setAttribute("position", "10000" + " " + reStartButton.getAttribute("position").y + " " + reStartButton.getAttribute("position").z)
 
-        for(let v of document.getElementsByClassName("eindMenu")){
+        for (let v of document.getElementsByClassName("eindMenu")) {
             v.setAttribute("position", "10000" + " " + v.getAttribute("position").y + " " + v.getAttribute("position").z)
         }
-      
-    var notes = await loadSong();
-    startPlaying(notes);
+
+        var notes = await loadSong();
+        startPlaying(notes);
     })
 
 }
 
 
 
-const  loadSong = () => {
+const loadSong = () => {
     //functie haalt het liedje op
-   return fetch("../song.json")
-    .then(response => response.json())
-    .then(json => {return(json[0]["notes"])});
+    return fetch("song.json")
+        .then(response => response.json())
+        .then(json => {
+            return (json[0]["notes"])
+        });
 }
 
 
@@ -51,16 +53,18 @@ const startPlaying = (notes) => {
     //functie speelt het liedje af en spawnt de noten
     var time = 0;
     while (notes.length > 0) {
-        setTimeout(() =>{
+        setTimeout(() => {
 
-            var tempNote = document.createElement("a-box");
-    
+            var tempNote = document.createElement("a-entity");
+
             let random = Math.round(Math.random() * 7 - 3.5);
             tempNote.setAttribute('color', 'red');
-            tempNote.setAttribute("position", random + " -3.5 -25");
-            tempNote.setAttribute("scale", "0.5 0.5 0.5");
+            tempNote.setAttribute("position", random + " 4.5 -25");
+            tempNote.setAttribute("scale", "0.05 0.05 0.05");
             tempNote.classList.add("js--interact");
+            tempNote.setAttribute("gltf-model", "#note")
             tempNote.setAttribute("material", " color: red; shader: flat; opacity: 0");
+            tempNote.setAttribute("rotation", "0 -90 0")
             tempNote.setAttribute("note", "");
 
             document.getElementById("js--scene").appendChild(tempNote);
@@ -68,21 +72,21 @@ const startPlaying = (notes) => {
             an.value = "property: opacity; easing: linear; dur: 2000; to: 1";
             tempNote.setAttribute("animation", an.value);
 
-        },time * songSpeed);
+        }, time * songSpeed);
         time += notes[0];
         notes.shift();
     }
     setTimeout(() => {
         openEindMenu();
-    }, time*songSpeed+3500);
+    }, time * songSpeed + 3500);
 }
 
 const openEindMenu = () => {
     // opent eindMenu en update de score
     var scoreText = document.getElementById("js--score-text");
-    scoreText.setAttribute("text", "value: score : " + score + "; color:black; align:center; wrapCount:25");
+    scoreText.setAttribute("text", "value: score : " + score + "; color:white; align:center; wrapCount:25");
 
-    for(let v of document.getElementsByClassName("eindMenu")){
+    for (let v of document.getElementsByClassName("eindMenu")) {
         v.setAttribute("position", "0" + " " + v.getAttribute("position").y + " " + v.getAttribute("position").z)
     }
 }
