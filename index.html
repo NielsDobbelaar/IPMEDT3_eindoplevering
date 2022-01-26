@@ -89,9 +89,10 @@
 
 
     <a-entity gltf-model="#ship" position="0 3 1.5" rotation="0 180 0" scale="2 2 2"></a-entity>
+    <a-entity gltf-model="#gitar" position="1.9 3.75 -2" rotation="0 180 0" scale=".05 .05 .05"></a-entity>
     <a-entity gltf-model="#planetOne" position="50 50 -60" scale="2 2 2" rotation="0 70 40"></a-entity>
-    <a-entity gltf-model="#planetTwo" position="-30 30 -50"></a-entity>
-    <a-entity gltf-model="#planetThree" position="10 10 -100"></a-entity>
+    <a-entity gltf-model="#planetTwo" position="10 10 -100"></a-entity>
+    <a-entity gltf-model="#planetThree" position="-30 30 -60"></a-entity>
 
     <a-camera id="js--camera" position="0 4.6 0">
       <a-entity id="js--cursor" animation__click=" property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1
@@ -102,9 +103,11 @@
         geometry="primitive: ring; radiusInner: 0.007; radiusOuter: 0.01" position="0 0 -0.5"
         raycaster="objects: .js--interact"></a-entity>
     </a-camera>
+
+    <a-light type="point" position="0 0 0" intensity="1" distance="50"></a-light>
+
   </a-scene>
 
-  <a-light type="point" position="0 0 -2" intensity="1" distance="50"></a-light>
 </body>
 
 </html>
