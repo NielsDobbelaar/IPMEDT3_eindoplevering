@@ -26,9 +26,13 @@
             this.missHandler = function (event) {
                 t.el.setAttribute("color", "red");
                 t.el.setAttribute("opacity", "0.5");
+                
+                misssound.components.sound.playSound();
                 setTimeout(() => {
                     t.el.setAttribute("color", "white");
-                    t.el.setAttribute("opacity", "0.1");
+                    t.el.setAttribute("opacity", "0.15");
+                    
+                misssound.components.sound.stopSound();
                 }, 150);
             }
             this.el.addEventListener("blockHit", this.hitHandler);

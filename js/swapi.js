@@ -4,6 +4,7 @@ AFRAME.registerComponent("planets", {
     const BASE_URL = "https://swapi.dev/api/";
     const PLANETS = "planets/"
     this.newPlanets = function(){
+      score = 0;
       for(let i = 0; i < planets.length; i++){
         let randomNum = Math.floor(Math.random() * 10) + 1;
         fetch(BASE_URL + PLANETS + randomNum)

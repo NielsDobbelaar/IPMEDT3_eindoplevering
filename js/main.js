@@ -1,11 +1,13 @@
-const songSpeed = 300;
+const songSpeed = 600;
 
 var score = 0;
-
+ 
 var hitsound;
+var misssound;
 
 window.onload = () => {
-    hitsound = document.getElementById("js--hit_entity")
+    hitsound = document.getElementById("js--hit_entity");
+    misssound = document.getElementById("js--miss_entity");
     //functie om het liedje op te halen en vervolgens nadat de startknop geklikt is
     //begint deze functie het spel
     const startButton = document.getElementById("js--startButton");
@@ -59,12 +61,12 @@ const startPlaying = (notes) => {
 
             let random = Math.round(Math.random() * 7 - 3.5);
             tempNote.setAttribute('color', 'red');
-            tempNote.setAttribute("position", random + " 4.5 -25");
+            tempNote.setAttribute("position", random + " 7.5 -25");
             tempNote.setAttribute("scale", "0.05 0.05 0.05");
             tempNote.classList.add("js--interact");
             tempNote.setAttribute("gltf-model", "#note")
             tempNote.setAttribute("material", " color: red; shader: flat; opacity: 0");
-            tempNote.setAttribute("rotation", "0 -90 0")
+            tempNote.setAttribute("rotation", "0 -90 -45")
             tempNote.setAttribute("note", "");
 
             document.getElementById("js--scene").appendChild(tempNote);
@@ -78,7 +80,7 @@ const startPlaying = (notes) => {
     }
     setTimeout(() => {
         openEindMenu();
-    }, time * songSpeed + 3500);
+    }, time * songSpeed + 5000);
 }
 
 const openEindMenu = () => {

@@ -1,16 +1,21 @@
 AFRAME.registerComponent("note", {
     init:  function() {
        
+        this.hit = false;
         this.missed = false;
         var t = this.el;
         this.hitHandler = function(event){
+            if(t.hit || t.missed){
+                return;
+            }
             //hit handler als er een noot wordt geraakt
             const hitBox = document.getElementById("js--hitBox");
             const hitEvent = new Event('blockHit');
             const missEvent = new Event('blockMiss');
             
-            if(t.getAttribute("position").z < -3.8 && t.getAttribute("position").z > -5.2){
+            if(t.getAttribute("position").z < -3.6 && t.getAttribute("position").z > -5.4){
                 hitBox.dispatchEvent(hitEvent);
+                t.hit = true;
             }else{
                 hitBox.dispatchEvent(missEvent);
                 t.missed = true;
@@ -21,20 +26,15 @@ AFRAME.registerComponent("note", {
     update: function() {},
     tick: function() {
         //de loop funcite die de noot beweegt en weghaalt wanneer hij gemist is 
-        const moveSpeed = -0.1;
-        const opacitySpeed = 0.05;
+        const moveSpeed = -0.05;
+
 
         const pos = this.el.getAttribute("position");
         var newpos = pos.x + " " + pos.y + " " + (pos.z-moveSpeed);
         this.el.setAttribute("position", newpos);
        
-        if(this.el.getAttribute("position").z > -3 || this.el.missed){
-            if(this.el.getAttribute("material").opacity > 0){
-                var newOpacity =  + this.el.getAttribute("material").opacity-opacitySpeed;
-                this.el.setAttribute("material", " color: red; shader: flat; opacity: "+newOpacity);
-            }else{
+        if(this.el.getAttribute("position").z > -1 || this.el.missed){
                 this.el.parentNode.removeChild(this.el);
-            }
         }
     
     },
